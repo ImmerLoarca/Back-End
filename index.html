@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+
+<style type="text/css">
+
+  form {
+    background-color: white;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 0 auto;
+    color: #171010;
+    width: 300px
+  }
+
+  .hvl {
+    border: solid 1px #ccc;
+    padding: 10px;
+    width: 280px;
+  }
+
+  input {
+    outline: none;
+  }
+
+  .hvl2 {
+    background: #2F5D62;
+    color: white;
+    border-radius: 10px;
+    font-size: 12px;
+    width: 50px;
+    height: 20px;
+    box-shadow: 4px 3px 3px #A7C4BC;
+  }
+
+</style>
+
+<body bgcolor="A7C4BC">
+<form name="Datos" method="POST" id="vform" date-netlify="true" onsubmit="return validacion()">
+
+<p>Nombre:</p>
+  <input class="hvl" type="text" name="nombre" size="30"  maxlength="50" id="nom">
+
+<p> Año de nacimiento:</p>
+  <input class="hvl" type="number" name="nacido" min="1900" id="adn" max="2023">
+
+<p>Estatura:</p>  
+  <input class="hvl" type="text" id="est" name="codigo" > 
+
+<p>Sexo:
+  <input type="radio" name="hm" value="H"> Hombre
+  <input   type="radio" name="hm" value="M"> Mujer
+</p>
+
+<p>
+  <input class="hvl2" type="submit" value="Enviar">
+  <input class="hvl2" type="reset" value="Borrar"> 
+</p>
+</form>
+   
+<script> 
+function validacion()
+ {  
+     var nomvalor = document.getElementById("nom").value;
+     if ( nomvalor == null || nomvalor.length == 0 || /^\s+$/.test(nomvalor) )
+      {
+      alert ("El campo nombre no debe estar vacio");
+       return false;
+          }
+       var nomvalor = document.getElementById("nom").value;
+       if (  /[0-9]/.test(nomvalor) )
+          {
+        alert ("El campo Nombre no debe contener números");
+        return false;
+         } 
+
+  {
+     var adnvalor = document.getElementById("adn").value;
+     if ( adnvalor == null || adnvalor.length == 0 || /^\s+$/.test(adnvalor) )
+       {
+      alert ("El campo Año de nacimiento no debe estar vacio");
+       return false;
+       } 
+
+   { 
+     var valor = document.getElementById("est").value;
+     if ( valor == null || valor.length == 0 || /^\s+$/.test(valor) )
+      {
+      alert ("El campo Estatura no debe estar vacio");
+       return false;
+        }
+     var valor = document.getElementById("est").value;
+     if ( isNaN(valor) ) 
+        {
+        alert ("El campo Estatura no debe contener letras");
+        return false;
+         }
+
+     {
+      var sexvalor = document.forms["Datos"]["hm"];
+      if (sexvalor[0].checked==false && sexvalor[1].checked==false)
+       {
+       alert ("Elige tu sexo por favor");
+        return false;
+         }
+
+       }    
+     }
+   }
+}
+
+ 
+</script>
+
+</body>
+</html>
